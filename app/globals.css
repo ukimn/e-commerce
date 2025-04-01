@@ -109,6 +109,21 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+.h1-animation {
+  background: linear-gradient(90deg, var(--chart-4), var(--chart-5));
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-size: 0 100%;
+  cursor: pointer;
+  transition: background-size 0.5s ease, color 0.3s ease;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.h1-animation:hover {
+  background-size: 100% 100%;
+  color: #fff;
+}
 
 @layer base {
   * {
@@ -119,8 +134,8 @@
   }
 }
 
-@layer utilities{
-  .button{
-    @apply py-3 px-3 border rounded-sm transition-transform hover:-translate-y-0.5;
+@layer utilities {
+  .button {
+    @apply py-3 px-3 border rounded-sm transition-transform hover:scale-105;
   }
 }

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/general/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { NuqsAdapter } from "nuqs/adapters/next";
 
 const geistSans = Inter({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistSans.className} antialiased`}
+        className={`${geistSans.variable} ${geistSans.className} antialiased min-h-screen flex flex-col`}
       >
         <ThemeProvider
           attribute={"class"}
@@ -32,7 +33,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <main className="flex-1 container mx-auto px-4 py-6 space-y-6">
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </main>
         </ThemeProvider>
       </body>
     </html>

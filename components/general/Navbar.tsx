@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Routes } from "@/lib/data";
+import { RoutesClient } from "./RoutesClient"
 import { ButtonModes } from "./ButtonModes";
 import { BurgerMenu } from "./BurgerMenu";
 import { AuthButton } from "./AuthButton";
@@ -11,20 +11,12 @@ export async function Navbar() {
     <>
       <header className="hidden md:flex py-5 px-5 justify-between items-center border-b">
         <nav>
-          <Link href="/" className="cursor-pointer font-medium text-3xl">
+          <Link href="/" className="h1-animation cursor-pointer font-medium text-3xl">
             Shopping
           </Link>
         </nav>
         <nav className="flex items-center gap-2">
-          {Routes.map((route) => (
-            <Link
-              href={route.route}
-              className="text-lg cursor-pointer transition-transform hover:-translate-y-0.5 border-white"
-              key={route.id}
-            >
-              {route.title}
-            </Link>
-          ))}
+          <RoutesClient/>
         </nav>
         <nav className="flex items-center justify-center">
           <ButtonModes />
