@@ -11,6 +11,12 @@ interface HomeCardProps {
   description: string;
 }
 
+interface userType {
+  user: {
+    name: string;
+  }
+}
+
 interface CommentCardProps {
   id?: number;
   Name: string;
@@ -61,4 +67,5 @@ export type {
   ProductsTypes,
   ProductsPageHostingProps,
   ProductsCartStore,
+  userType
 };

@@ -5,8 +5,9 @@ import { Button } from "../ui/button";
 import { Routes } from "@/lib/data";
 import Link from "next/link";
 import { AuthButton } from "./AuthButton";
+import { userType } from "@/lib/types";
 
-export function BurgerMenu({session}: {session: any}) {
+export function BurgerMenu({session}: {session: userType}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (

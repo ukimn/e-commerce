@@ -3,11 +3,10 @@ import { RoutesClient } from "./RoutesClient";
 import { ButtonModes } from "./ButtonModes";
 import { BurgerMenu } from "./BurgerMenu";
 import { AuthButton } from "./AuthButton";
-import { ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
 import { auth } from "@/auth";
-import { Button } from "../ui/button";
 import { CartStoreIcon } from "./CartStoreIcon";
+import { userType } from "@/lib/types";
 
 export async function Navbar() {
   const session = await auth();
@@ -51,7 +50,7 @@ export async function Navbar() {
             Shopping
           </Link>
         </nav>
-        <BurgerMenu session={session} />
+        <BurgerMenu session={session as userType} />
         <ButtonModes />
         <CartStoreIcon/>
       </header>
