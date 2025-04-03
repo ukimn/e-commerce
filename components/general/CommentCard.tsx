@@ -25,13 +25,15 @@ export function CommentCard({
         <div className="flex justify-around items-center gap-2 mx-2 my-1">
           {" "}
           {/* Reduce margins */}
-          <Image
-            src={image}
-            alt={`${Name}'s image`}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          {image && (
+            <Image
+              src={image}
+              alt={`${Name}'s image`}
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+          )}
           <CardTitle className="text-xl">{Name}</CardTitle> {/* Smaller text */}
         </div>
         <CardDescription className={`text-sm break-words line-clamp-2`}>
