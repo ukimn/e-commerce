@@ -6,7 +6,7 @@ interface routeTypes {
 
 interface HomeCardProps {
   id: number;
-  animation: Object | string;
+  animation: object | string;
   topic: string;
   description: string;
 }

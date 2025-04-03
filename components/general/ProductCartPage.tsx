@@ -15,7 +15,6 @@ import Link from "next/link";
 import { FormatPrice } from "@/lib/utils";
 import { ShoppingCartIcon } from "lucide-react";
 import { useCartStore } from "@/app/store/todo.store";
-import { useState } from "react";
 
 export function ProductCartPage({
   price,
