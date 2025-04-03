@@ -2,7 +2,7 @@ import { ProductsPage } from "@/components/general/ProductsPage";
 import ProductSkeletonLoader from "@/components/general/ProductsSkeleton";
 import { Suspense } from "react";
 
-async function getPosts(){
+async function getProducts(){
   const res = await fetch("https://dummyjson.com/products");
   const products = await res.json();
 
@@ -20,7 +20,7 @@ const Products = () => {
 }
 
 const ShowProducts = async()=>{
-  const products = await getPosts();
+  const products = await getProducts();
 
   return (
     <div>

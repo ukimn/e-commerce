@@ -17,7 +17,7 @@ import { ShoppingCartIcon } from "lucide-react";
 import { useCartStore } from "@/app/store/todo.store";
 import { useState } from "react";
 
-export default function ProductsCard({
+export function ProductCartPage({
   price,
   images,
   title,
@@ -28,16 +28,7 @@ export default function ProductsCard({
   tags,
   id,
 }: ProductsTypes) {
-  const addToCart = useCartStore((state)=>state.addProduct);
-  const [add, setAdd] = useState(false);
-  const handleClick = ({ price, images, title, description, category, rating, stock, tags, id }: ProductsTypes)=>{
-    if(add === true){
-      alert("Product already added to cart")
-      return;
-    }
-    addToCart({ price, images, title, description, category, rating, stock, tags, id });
-    setAdd(true);
-  }
+  const removeProduct = useCartStore((state) => state.removeProduct)
   return (
     <Card className="shadow-md transition-shadow hover:shadow-lg flex flex-col items-center justify-center">
       <div className="w-full relative rounded-lg">
@@ -84,7 +75,7 @@ export default function ProductsCard({
         </CardDescription>
         <div className="flex flex-col items-center justify-center">
           <div className="flex items-center justify-between my-5 w-full">
-            <Button className={`my-5 py-6 px-6`} onClick={()=>{handleClick({ price, images, title, description, category, rating, stock, tags, id })}}>{add ? "Added to Cart" : "Add to Cart"}</Button>
+            <Button className={`my-5 py-6 px-6`} onClick={()=>removeProduct(id)}>Remove Product</Button>
             <h2 className="text-3xl font-medium">{FormatPrice(price)}</h2>
           </div>
           <Link href={`products/${id}`} className="w-full">

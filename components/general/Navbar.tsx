@@ -1,9 +1,13 @@
 import Link from "next/link";
-import { RoutesClient } from "./RoutesClient"
+import { RoutesClient } from "./RoutesClient";
 import { ButtonModes } from "./ButtonModes";
 import { BurgerMenu } from "./BurgerMenu";
 import { AuthButton } from "./AuthButton";
+import { ShoppingCartIcon } from "lucide-react";
+import Image from "next/image";
 import { auth } from "@/auth";
+import { Button } from "../ui/button";
+import { CartStoreIcon } from "./CartStoreIcon";
 
 export async function Navbar() {
   const session = await auth();
@@ -11,20 +15,35 @@ export async function Navbar() {
     <>
       <header className="hidden md:flex py-5 px-5 justify-between items-center border-b">
         <nav>
-          <Link href="/" className="h1-animation cursor-pointer font-medium text-3xl">
+          <Link
+            href="/"
+            className="h1-animation cursor-pointer font-medium text-3xl"
+          >
             Shopping
           </Link>
         </nav>
         <nav className="flex items-center gap-2">
-          <RoutesClient/>
-        </nav>
-        <nav className="flex items-center justify-center">
+          <RoutesClient />
           <ButtonModes />
         </nav>
         <nav className="flex items-center gap-2">
-          <AuthButton type={session ? "signout" : "signin"}/>
-          {session?.user && <Link className="transition-transform duration-200 hover:-translate-y-0.5" href={"/profile"}>{session.user.name}</Link>}
+          <AuthButton type={session ? "signout" : "signin"} />
+          {session?.user && (
+            <Link
+              className="transition-transform duration-200 hover:-translate-y-0.5"
+              href={"/profile"}
+            >
+              <Image
+                src={session?.user.image || ""}
+                alt="Profile Logo"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+            </Link>
+          )}
         </nav>
+        <CartStoreIcon />
       </header>
       <header className="flex md:hidden justify-between items-center border-b py-7 px-4">
         <nav>
@@ -32,8 +51,9 @@ export async function Navbar() {
             Shopping
           </Link>
         </nav>
-        <BurgerMenu session={session}/>
-        <ButtonModes/>
+        <BurgerMenu session={session} />
+        <ButtonModes />
+        <CartStoreIcon/>
       </header>
     </>
   );

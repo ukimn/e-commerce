@@ -4,7 +4,6 @@ import { HomeCard } from "@/components/general/HomeCard";
 import { HomeCardData } from "@/lib/HomeCardData";
 import Link from "next/link";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import HomePageAnimation from "./lottieFiles/HomePageAnimation.json";
 import { Comments } from "@/components/general/Comments";
 export default function Home() {
   return (

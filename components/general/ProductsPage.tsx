@@ -32,7 +32,6 @@ export function ProductsPage({ Product }: ProductsPageHostingProps) {
 
   const filteredCategories = [...new Set(Product.products.map((product)=>product.category))];
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
   const [categorySort, setCategorySort] = useQueryState(
     "categorySort",
     parseAsString.withDefault("")
@@ -61,13 +60,13 @@ export function ProductsPage({ Product }: ProductsPageHostingProps) {
               >
                 {categorySort
                   ? categorySort.charAt(0).toUpperCase() + categorySort.slice(1)
-                  : "Select Category"}
+                  : "Select Category..."}
                 <Filter className="mr-2 h-4 w-4" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
               <Command>
-                <CommandInput placeholder="Select Category..." />
+                <CommandInput placeholder="Search Category..." />
                 <CommandList>
                   <CommandEmpty>No framework found.</CommandEmpty>
                   <CommandGroup>
